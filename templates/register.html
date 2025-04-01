@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            width: 100%;
+            background-color: #14bf98;
+            padding: 15px;
+            color: #fff;
+            text-align: left;
+        }
+
+        .header h3 {
+            font-weight: bolder;
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .register-container {
+            width: 90%; /* Responsive width */
+            max-width: 400px; /* Maximum width */
+            margin: 50px auto; /* Adjusted margin for responsiveness */
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .register-container h1 {
+            font-weight: bold;
+            font-size: 32px;
+            color: #14bf98;
+            margin-bottom: 25px;
+        }
+
+        .register-container label {
+            font-weight: 600;
+            font-size: 16px;
+            color: #333;
+            display: block;
+            margin-bottom: 8px;
+            text-align: left;
+            margin-left: 10px;
+        }
+
+        .register-container input[type="text"], 
+        .register-container input[type="password"] {
+            padding: 12px;
+            width: calc(100% - 5px); /* Adjusted width for padding */
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            box-sizing: border-box;
+        }
+
+        .register-container input[type="submit"] {
+            width: 100%;
+            height: 45px;
+            padding: 10px;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: #14bf98;
+            color: #FFF;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .register-container input[type="submit"]:hover {
+            background-color: #11997b;
+        }
+
+        .register-container p {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .register-container p a {
+            color: #14bf98;
+            text-decoration: none;
+        }
+
+        .register-container p a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: red;
+            margin-bottom: 15px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .register-container {
+                padding: 20px;
+                margin: 30px auto;
+            }
+
+            .register-container h1 {
+                font-size: 28px;
+            }
+        }
+
+        /* Specific adjustments for iPhone SE */
+        @media (max-width: 320px) {
+            .header h3 {
+                font-size: 20px;
+            }
+
+            .register-container h1 {
+                font-size: 24px;
+            }
+
+            .register-container label {
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+
+            .register-container input[type="text"],
+            .register-container input[type="password"] {
+                padding: 10px;
+                margin-bottom: 15px;
+                font-size: 14px;
+            }
+
+            .register-container input[type="submit"] {
+                height: 40px;
+                padding: 8px;
+                font-size: 16px;
+            }
+
+            .register-container p {
+                margin-top: 15px;
+                font-size: 12px;
+            }
+
+            .error-message {
+                margin-bottom: 10px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h3>Loan Approval System</h3>
+    </div>
+    <div class="register-container">
+        <h1>Register</h1>
+        {% if error %}
+            <p class="error-message">{{ error }}</p>
+        {% endif %}
+        <form method="POST" action="{{ url_for('register') }}">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            <label for="mobile">Mobile</label>
+            <input type="text" id="mobile" name="mobile" required>
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" required>
+            <input type="submit" value="Register">
+        </form>
+        <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+    </div>
+</body>
+</html>
