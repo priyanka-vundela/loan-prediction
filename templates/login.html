@@ -8,7 +8,11 @@
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
-            background-color: #f4f4f4;
+            background-image: url("static/images/pexels-karolina-grabowska-4968384.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             margin: 0;
             padding: 0;
             display: flex;
@@ -26,55 +30,55 @@
 
         .header h3 {
             font-weight: bolder;
-            font-size: 24px; /* Reduced header font size for smaller screens */
+            font-size: 24px;
             margin: 0;
         }
 
         .login-container {
             width: 90%;
-            max-width: 350px; /* Reduced max width for iPhone SE */
-            margin: 30px auto; /* Reduced margin for smaller screens */
-            background-color: #fff;
+            max-width: 20rem;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             text-align: center;
+            background-color: rgba(255, 255, 255, 0.7);
             align-self: center;
+            margin-top: 3rem;
         }
 
         .login-container h1 {
             font-weight: bold;
-            font-size: 28px; /* Slightly reduced heading size */
+            font-size: 28px;
             color: #14bf98;
-            margin-bottom: 20px; /* Reduced margin */
+            margin-bottom: 20px;
         }
 
         .login-container label {
             font-weight: 600;
-            font-size: 14px; /* Reduced label size */
+            font-size: 14px;
             color: #333;
             display: block;
-            margin-bottom: 5px; /* Reduced margin */
+            margin-bottom: 5px;
             text-align: left;
             margin-left: 10px;
         }
 
         .login-container input[type="text"], 
         .login-container input[type="password"] {
-            padding: 10px; /* Reduced padding */
-            width: calc(100% - 5px); /* Adjusted width */
-            margin-bottom: 15px; /* Reduced margin */
+            padding: 10px;
+            width: calc(100% - 5px);
+            margin-bottom: 15px;
             border: 1px solid #ddd;
             border-radius: 50px;
             box-sizing: border-box;
-            font-size: 14px; /* Reduced input text size */
+            font-size: 14px;
         }
 
         .login-container input[type="submit"] {
             width: 100%;
-            height: 40px; /* Reduced button height */
-            padding: 8px; /* Reduced padding */
-            font-size: 16px; /* Reduced button text size */
+            height: 40px;
+            padding: 8px;
+            font-size: 16px;
             border: none;
             outline: none;
             background-color: #14bf98;
@@ -89,8 +93,8 @@
         }
 
         .login-container p {
-            margin-top: 15px; /* Reduced margin */
-            font-size: 12px; /* Reduced paragraph size */
+            margin-top: 15px;
+            font-size: 12px;
             color: #666;
         }
 
@@ -105,11 +109,10 @@
 
         .error-message {
             color: #dc3545;
-            margin-bottom: 10px; /* Reduced margin */
-            font-size: 12px;/* Reduced error message size */
+            margin-bottom: 10px;
+            font-size: 12px;
         }
 
-        /* Specific adjustments for iPhone SE */
         @media (max-width: 320px) {
             .header h3 {
                 font-size: 20px;

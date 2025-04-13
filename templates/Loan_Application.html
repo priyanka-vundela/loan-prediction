@@ -28,6 +28,42 @@
             padding: 15px;
         }
         
+        @media (max-width: 991px) {
+        .col-lg-6 {
+            padding-bottom: 0;
+        }
+        
+        .text-container {
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+        
+        /* Remove extra spacing between property area and applicant income on mobile */
+        #property_area {
+            margin-bottom: 0;
+        }
+        
+        .form-group {
+            margin-bottom: 10px;
+        }
+        
+        /* Make the containers touch each other */
+        .col-lg-6 + .col-lg-6 {
+            margin-top: 0;
+            padding-top: 0;
+        }
+        
+        /* Add some additional fixes for mobile layout */
+        .row {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        .container {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
         /* Form element styling */
         .form-control-input, 
         select.form-control-input {
@@ -171,7 +207,7 @@
     </div>
     <nav class="navbar navbar-expand-md navbar-dark navbar-custom fixed-top">
         <a class="navbar-brand logo-image" href="/">
-            <h3 style="color:#fff;">Loan Approval System</h3>
+            <h3 style="color:#fff; font-size: 1.25rem;">Loan Approval System</h3>
         </a>
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -220,7 +256,7 @@
             <form id="contactForm" data-toggle="validator" data-focus="false" action="{{ url_for('Loan_Application') }}" method="POST">
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="text-container">
+                        <div class="text-container cont1">
                             <div class="form-group">
                                 <label class="label-control" for="genders_type">Gender</label>
                                 <select name="genders_type" id="genders_type" class="form-control-input" required>
@@ -323,13 +359,13 @@
                             </div>
                             
                             <div class="form-group">
-                                <label class="label-control" for="loan_bank">Bank</label>
+                                <label class="label-control" for="loan_bank">Purpose of Loan</label>
                                 <select name="loan_bank" id="loan_bank" class="form-control-input" required>
-                                    <option value="" disabled selected>Select bank</option>
-                                    <option value="ICICI">ICICI</option>
-                                    <option value="SBI">SBI</option>
-                                    <option value="Canara">Canara</option>
-                                    <option value="Hindustan">Hindustan</option>
+                                    <option value="" disabled selected>Select Purpose of Loan</option>
+                                    <option value="Home">Home</option>
+                                    <option value="Car">Car</option>
+                                    <option value="Education">Education</option>
+                                    <option value="Business">Business</option>
                                 </select>
                                 <div class="help-block with-errors"></div>
                             </div>
@@ -373,22 +409,42 @@
     
     <script>
         $(document).ready(function() {
-            // ... (your form validation code)
-
-            // Modal functionality
+            var modal = document.getElementById("resultModal");
+            var span = document.getElementsByClassName("close")[0];
+            
+            // Check if we have a result
             {% if result %}
-                var modal = document.getElementById("resultModal");
-                var span = document.getElementsByClassName("close")[0];
-                modal.style.display = "block";
-                span.onclick = function() {
+                // Get the page load state from session storage
+                var isFirstLoad = sessionStorage.getItem('formSubmitted') !== 'true';
+                
+                if (isFirstLoad) {
+                    // First load of the page with results, don't show modal yet
+                    sessionStorage.setItem('formSubmitted', 'true');
+                    // Hide the modal
+                    modal.style.display = "none";
+                } else {
+                    // This is a return after form submission, show the modal
+                    modal.style.display = "block";
+                    // Reset the flag for next time
+                    sessionStorage.removeItem('formSubmitted');
+                }
+            {% else %}
+                // No result, just set the flag for next page load
+                sessionStorage.setItem('formSubmitted', 'true');
+                modal.style.display = "none";
+            {% endif %}
+            
+            // Close modal when clicking X
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+            
+            // Close modal when clicking outside
+            window.onclick = function(event) {
+                if (event.target == modal) {
                     modal.style.display = "none";
                 }
-                window.onclick = function(event) {
-                    if (event.target == modal) {
-                        modal.style.display = "none";
-                    }
-                }
-            {% endif %}
+            }
         });
     </script>
 </body>

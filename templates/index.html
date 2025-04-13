@@ -17,15 +17,22 @@
     <style>
         /* App Theme Adjustments */
         body {
-            background-color: #f8f9fa;
+            background-image: url("static/images/pexels-artempodrez-5716001.jpg"); /* Add background image */
+            background-size: cover; /* Cover the entire viewport */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Prevent image repetition */
+            background-attachment: fixed; /* Make the background fixed */
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            margin: 0; /* Remove default body margin */
+            color: #333; /* Default text color */
+            font-size: 16px; /* Base font size for rem units */
         }
 
         .navbar-custom {
             background-color: #14bf98;
-            padding: 15px 0; /* Increase vertical padding */
+            padding: 1rem 0; /* Using rem for responsive padding */
         }
 
         .navbar-custom .navbar-brand {
@@ -34,18 +41,20 @@
         }
 
         .navbar-custom .navbar-brand img {
-            height: 40px;
-            margin-right: 10px;
+            height: 2.5rem; /* Using rem for responsive image height */
+            margin-right: 0.625rem; /* Using rem for responsive margin */
         }
 
         .navbar-custom .navbar-brand span {
-            font-size: 18px;
+            font-size: 1.125rem; /* Using rem for responsive font size */
             color: #fff;
         }
 
         .navbar-custom .navbar-nav .nav-link {
             color: #fff;
             transition: color 0.3s ease;
+            font-size: 1rem; /* Using rem for responsive font size */
+            padding: 0.5rem 1rem; /* Using rem for responsive padding */
         }
 
         .navbar-custom .navbar-nav .nav-link:hover {
@@ -54,29 +63,35 @@
 
         .navbar-toggler-awesome {
             color: #fff;
+            font-size: 1.25rem; /* Using rem for responsive font size */
         }
 
         .content-container {
-            flex-grow: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 20px;
+            padding: 1.25rem; /* Using rem for responsive padding */
+            border-radius: 0.625rem; /* Using rem for responsive border-radius */
+            box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.4); /* Using rem for responsive box-shadow */
+            max-width: 80%;
+            margin: auto; /* Center both horizontally and vertically */
+            background-color: rgba(255, 255, 255, 0.7);
+         /* Center perfectly */
         }
 
         .content-container h1 {
-            font-size: 3em;
+            font-size: 2rem; /* Using rem for responsive font size */
             font-weight: bold;
-            margin-bottom: 20px;
+            margin-bottom: 1.25rem; /* Using rem for responsive margin */
             color: #14bf98;
         }
 
         .content-container p {
-            font-size: 1.2em;
-            color: #333;
-            margin-bottom: 30px;
+            font-size: 1rem; /* Using rem for responsive font size */
+            color: #000;
+            margin-bottom: 1.875rem; /* Using rem for responsive margin */
         }
 
         .content-container strong {
@@ -85,16 +100,18 @@
 
         .button-container {
             display: flex;
-            gap: 20px;
+            gap: 1.25rem; /* Using rem for responsive gap */
+            flex-direction: row; /* Default to row for larger screens */
         }
 
         .button-container a {
-            padding: 10px 30px;
+            padding: 0.625rem 1.875rem; /* Using rem for responsive padding */
             background-color: #14bf98;
             color: #fff;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 1.875rem; /* Using rem for responsive border-radius */
             transition: background-color 0.3s ease;
+            font-size: 1rem; /* Using rem for responsive font size */
         }
 
         .button-container a:hover {
@@ -104,21 +121,47 @@
 
         /* Responsive Adjustments */
         @media (max-width: 768px) {
+            body {
+                font-size: 14px; /* Adjust base font size for smaller screens */
+            }
+
             .navbar-custom .navbar-brand span {
-                font-size: 16px;
+                font-size: 1rem;
             }
 
             .content-container h1 {
-                font-size: 2.5em;
+                font-size: 1.75rem;
             }
 
             .content-container p {
-                font-size: 1em;
+                font-size: 0.9rem;
             }
 
-            .button-container {
-                flex-direction: column;
-                gap: 10px;
+            .button-container a {
+                padding: 0.5rem 1.25rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            body {
+                font-size: 12px; /* Further adjust base font size for even smaller screens */
+            }
+
+            .navbar-custom .navbar-brand span {
+                font-size: 0.9rem;
+            }
+
+            .content-container h1 {
+                font-size: 1.5rem;
+            }
+
+            .content-container p {
+                font-size: 0.8rem;
+            }
+
+            .button-container a {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -128,7 +171,7 @@
         <a class="navbar-brand logo-image" href="/">
             <span>Loan Approval System</span>
         </a>
-        
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-awesome fas fa-bars"></span>
             <span class="navbar-toggler-awesome fas fa-times"></span>

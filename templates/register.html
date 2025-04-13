@@ -8,7 +8,11 @@
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
-            background-color: #f4f4f4;
+            background-image: url("static/images/pexels-karolina-grabowska-4968384.jpg"); /* Background Image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             margin: 0;
             padding: 0;
             display: flex;
@@ -31,14 +35,15 @@
         }
 
         .register-container {
-            width: 90%; /* Responsive width */
-            max-width: 400px; /* Maximum width */
-            margin: 50px auto; /* Adjusted margin for responsiveness */
-            background-color: #fff;
+            width: 90%;
+            max-width: 20rem;
             padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             text-align: center;
+            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
+            align-self: center;
+            margin-top: 3rem;
         }
 
         .register-container h1 {
@@ -59,9 +64,11 @@
         }
 
         .register-container input[type="text"], 
-        .register-container input[type="password"] {
+        .register-container input[type="password"],
+        .register-container input[type="email"],
+        .register-container input[type="mobile"] {
             padding: 12px;
-            width: calc(100% - 5px); /* Adjusted width for padding */
+            width: calc(100% - 5px);
             margin-bottom: 20px;
             border: 1px solid #ddd;
             border-radius: 50px;
@@ -134,7 +141,9 @@
             }
 
             .register-container input[type="text"],
-            .register-container input[type="password"] {
+            .register-container input[type="password"],
+            .register-container input[type="email"],
+            .register-container input[type="mobile"] {
                 padding: 10px;
                 margin-bottom: 15px;
                 font-size: 14px;
