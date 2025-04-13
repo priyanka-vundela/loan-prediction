@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Loan Application</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap&subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600&display=swap&subset=latin-ext" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/fontawesome-all.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/swiper.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/magnific-popup.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.svg') }}">
+    <style>
+        /* Responsive adjustments */
+        .cards-1, .cards-2, .counter {
+            padding: 40px 0;
+        }
+
+        .card {
+            margin-bottom: 30px;
+        }
+
+        @media (min-width: 992px) {
+            .cards-1 .row > div {
+                display: flex;
+            }
+
+            .cards-1 .card {
+                flex: 1;
+            }
+
+            .counter .row > div {
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        .text-container {
+           
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-control-submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin: 20px auto;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .card-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .list-unstyled {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .list-unstyled li {
+            margin-bottom: 10px;
+        }
+
+        .list-unstyled i {
+            margin-right: 10px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .cont3{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .hybrid {
+            margin: 0;
+            position: relative;
+            width: auto;
+            float: left;
+            color: #fff;
+            font-size: 3rem;
+            font-weight: 900;
+            align-self: center;
+            }
+
+            .hybrid span {
+            color:#fff;
+            }
+
+            /* This is for inserting a cursor */
+            .hybrid span::after {
+            align-self: center;
+            content: '|';
+            transition: 0.05s;
+            animation: blink 1.5s infinite;
+            }
+
+            /* This is for the cursor blinking effect */
+            @keyframes blink {
+            0%, 50%, 100% {
+                opacity: 1;
+            }
+            25%, 75% {
+                opacity: 0;
+            }
+            }
+        /* Adjustments for smaller devices */
+        @media (max-width: 767px) {
+            .cards-1 .card-body p, .cards-1 .card-body h4 {
+                text-align: center;
+            }
+            .row.predict-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            .row.predict-row .col-lg-6 {
+                width: 100%;
+                text-align: center;
+            }
+            .row.predict-row .col-lg-6:first-child {
+                margin-bottom: 20px;
+            }
+            .hybrid{
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body data-spy="scroll" data-target=".fixed-top">
+    <div class="spinner-wrapper">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-md navbar-dark navbar-custom fixed-top">
+        <a class="navbar-brand logo-image" href="/"><img src="{{ url_for('static', filename='images/logo.svg') }}" alt="alternative"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-awesome fas fa-bars"></span>
+            <span class="navbar-toggler-awesome fas fa-times"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav ml-auto d-flex flex-row align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#header">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#Predict">PREDICT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#Insights">INSIGHTS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="{{ url_for('login') }}">LOGOUT</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <header id="header" class="header">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 cont3">
+                        <div class="text-container">
+                                <h2 class="hybrid">Loan Data <span id="typed"> </span></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="Predict" class="cards-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 d-flex flex-wrap justify-content-center">
+                    <div class="card d-flex flex-column align-items-center">
+                        <span class="fa-stack">
+                            <span class="hexagon"></span>
+                            <i class="fas fa-binoculars fa-stack-1x"></i>
+                        </span>
+                        <div class="card-body">
+                            <h4 class="card-title">Data Analysis</h4>
+                            <p class="">
+                                &#8226 Size: 400 Kb<br>
+                                &#8226 Shape: 613 Rows & 13 Columns with 1 column as Target<br>
+                                &#8226 Data Source: DPhi<br>
+                                &#8226 Platform: Jupyter & Google Colab<br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card d-flex flex-column align-items-center">
+                        <span class="fa-stack">
+                            <span class="hexagon"></span>
+                            <i class="fas fa-list-alt fa-stack-1x"></i>
+                        </span>
+                        <div class="card-body">
+                            <h4 class="card-title">Data Visualization</h4>
+                            <p class="">&#8226 Matplotlib &amp; Seaborn to visualize.<br>
+                            &#8226 SweetViz for reporting.</p>
+                        </div>
+                    </div>
+                    <div class="card d-flex flex-column align-items-center">
+                        <span class="fa-stack">
+                            <span class="hexagon"></span>
+                            <i class="fas fa-chart-pie fa-stack-1x"></i>
+                        </span>
+                        <div class="card-body">
+                            <h4 class="card-title">Default Prediction</h4>
+                            <p class="">&#8226 Get your loan application approval chances by providing few necessary informations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div >
+        <div class="container">
+            <div class="row predict-row">
+                <div class="col-lg-6 d-flex flex-column justify-content-center">
+                    <div class="section-title">Predict</div>
+                    <div class="text-container">
+                        <h3>Click on Loan Application to Start</h3>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-flex flex-column justify-content-center">
+                    <form id="callMeForm" data-toggle="validator" data-focus="false">
+                        <div class="form-group">
+                            <a type="submit" class="form-control-submit-button" href="Loan_Application">Loan Application</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="Visualize" class="cards-2">
+        <div class="container">
+            <div class="row">
+                <div class="card-body">
+                    <div class="col-lg-12">
+                        <div class="section-title">Visualization</div>
+                        <h2>Get Knowledge about Loan Dataset</h2>
+                        <ul class="list-unstyled li-space-lg">
+                            <li class="media">
+                                <i class="fas fa-square"></i>
+                                <div class="media-body">Select the report to show the EDA through the whole Data set</div>
+                            </li>
+                            <li class="media">
+                                <i class="fas fa-square"></i>
+                                <div class="media-body">Select JoinReport to show the EDA through Train Data set</div>
+                            </li>
+                        </ul>
+                        <form id="callMeForm" data-toggle="validator" data-focus="false">
+                            <div class="form-group">
+                                <a type="submit" class="form-control-submit-button" href="report">Whole Data set Report</a>
+                            </div>
+                            <div class="form-group">
+                                <a type="submit" class="form-control-submit-button" href="jointreport">Train Data Report</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="Insights" class="counter">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-xl-6">
+                    <div>
+                        <img class="card-image" src="{{ url_for('static', filename='images/corr_plot.png') }}" alt="alternative">
+                        <img class="card-image" src="{{ url_for('static', filename='images/feature importance.png') }}" alt="alternative">
+                    </div>
+                </div>
+                <div class="col-lg-7 col-xl-6">
+                    <div class="text-container pl-5">
+                        <div class="section-title">Few Insights.</div>
+                        <h2>Using Machine Learning Model : Logistic Regression</h2>
+                        <p>AI System tries to predict the people who can be granted loans or need to be rejected</p>
+                        <ul class="list-unstyled li-space-lg">
+                            <li class="media">
+                                <div class="media-body">
+                                    <i class="fas fa-square p-1"></i>
+                                    We see that the most correlate variables are:
+                                    <ul class="list-unstyled li-space-lg">
+                                        <li><i class="fas fa-square p-1"></i>ApplicantIncome with LoanAmount</li>
+                                        <li><i class="fas fa-square p-1"></i>Credit_History with Loan_Status.</li>
+                                        <li><i class="fas fa-square p-1"></i>LoanAmount is also correlated with CoapplicantIncome</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <h3> Feature Engineering and and using models LR, Decision Tree, Random Forest</h3>
+                        <p> After using Feature engineering with the introduction of some new features like
+                            <ul class="list-unstyled li-space-lg">
+                                <li><i class="fas fa-square"></i><strong> Total Income</strong>: As discussed during bivariate analysis we will combine the Applicant Income and Coapplicant Income. If the total income is high, chances of loan approval might also be high.</li>
+                                <li><i class="fas fa-square"></i><strong> EMI </strong>:is the monthly amount to be paid by the applicant to repay the loan. Idea behind making this variable is that people who have high EMI’s might find it difficult to pay back the loan. We can calculate the EMI by taking the ratio of loan amount with respect to loan amount term.</li>
+                                <li><i class="fas fa-square"></i><strong> Balance Income </strong>:This is the income left after the EMI has been paid. Idea behind creating this variable is that if this value is high, the chances are high that a person will repay the loan and hence increasing the chances of loan approval.</li>
+                                <li><i class="fas fa-square"></i><strong> Credit History </strong>is the most important feature followed by <strong>Balance Income</strong>,<strong>EMI</strong>,<strong> Total Income = ApplicantInc + Co-AppIncome</strong></li>
+                            </ul>
+                        </p>
+                        <p>To know more about the data analysis look at this project on <strong><a href="https://github.com/priyanka-vundela/loan-prediction/tree/main/LoanApplication_Prediction">Project on Github</a></strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.easing.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.magnific-popup.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/morphext.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/validator.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <script>
+        const txt = ["Analysis", "Prediction", "Visualization"];
+
+// These are increment and decrement counters
+let i=0, j=0;
+
+// This is for checking if all the characters of the word have been typed
+let end=false;
+
+// This will be the waiting function, to give delay after typing
+function wait(seconds){
+  return new Promise((resolve) => setTimeout(resolve, seconds*1000));
+  
+}
+
+// The main funcion to type and backspace multiple words 
+async function main(){
+  
+  // Check if the value of i is less than array length of txt containg all the words  
+  if(i < txt.length){
+    
+    // This is for the auto typing
+    if(end==false && j <= txt[i].length){
+      document.getElementById("typed").innerHTML += txt[i][j];  
+      j++
+      
+    }
+    
+    //This is for backspacing the characters one by one
+    if(end==true && j <= txt[i].length){
+        document.getElementById("typed").innerHTML = txt[i].substring(0,j-1);
+        j--
+        
+    }
+    
+    // This is for checking if all the characters have been typed
+    if(j == txt[i].length){
+        end= true;
+        await wait(2)
+    }
+    
+    // This is for going to the next word  
+    if(end==true && j ==0){
+      i++
+      end=false;  
+    }
+  }
+  // If the value of i becomes greater than    
+  else
+    i=0;
+  setTimeout(main,200)
+  
+   
+}
+main();
+
+
+
+
+    </script>
+</body>
+</html>

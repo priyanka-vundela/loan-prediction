@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap&subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600&display=swap&subset=latin-ext" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/fontawesome-all.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/swiper.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/magnific-popup.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/bootstrap.css')}}" rel="stylesheet">
+
+    <style>
+        /* App Theme Adjustments */
+        body {
+            background-image: url("static/images/pexels-artempodrez-5716001.jpg"); /* Add background image */
+            background-size: cover; /* Cover the entire viewport */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Prevent image repetition */
+            background-attachment: fixed; /* Make the background fixed */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0; /* Remove default body margin */
+            color: #333; /* Default text color */
+            font-size: 16px; /* Base font size for rem units */
+        }
+
+        .navbar-custom {
+            background-color: #14bf98;
+            padding: 1rem 0; /* Using rem for responsive padding */
+        }
+
+        .navbar-custom .navbar-brand {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-custom .navbar-brand img {
+            height: 2.5rem; /* Using rem for responsive image height */
+            margin-right: 0.625rem; /* Using rem for responsive margin */
+        }
+
+        .navbar-custom .navbar-brand span {
+            font-size: 1.125rem; /* Using rem for responsive font size */
+            color: #fff;
+        }
+
+        .navbar-custom .navbar-nav .nav-link {
+            color: #fff;
+            transition: color 0.3s ease;
+            font-size: 1rem; /* Using rem for responsive font size */
+            padding: 0.5rem 1rem; /* Using rem for responsive padding */
+        }
+
+        .navbar-custom .navbar-nav .nav-link:hover {
+            color: #d1f7ef;
+        }
+
+        .navbar-toggler-awesome {
+            color: #fff;
+            font-size: 1.25rem; /* Using rem for responsive font size */
+        }
+
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1.25rem; /* Using rem for responsive padding */
+            border-radius: 0.625rem; /* Using rem for responsive border-radius */
+            box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.4); /* Using rem for responsive box-shadow */
+            max-width: 80%;
+            margin: auto; /* Center both horizontally and vertically */
+            background-color: rgba(255, 255, 255, 0.7);
+         /* Center perfectly */
+        }
+
+        .content-container h1 {
+            font-size: 2rem; /* Using rem for responsive font size */
+            font-weight: bold;
+            margin-bottom: 1.25rem; /* Using rem for responsive margin */
+            color: #14bf98;
+        }
+
+        .content-container p {
+            font-size: 1rem; /* Using rem for responsive font size */
+            color: #000;
+            margin-bottom: 1.875rem; /* Using rem for responsive margin */
+        }
+
+        .content-container strong {
+            color: #14bf98;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 1.25rem; /* Using rem for responsive gap */
+            flex-direction: row; /* Default to row for larger screens */
+        }
+
+        .button-container a {
+            padding: 0.625rem 1.875rem; /* Using rem for responsive padding */
+            background-color: #14bf98;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 1.875rem; /* Using rem for responsive border-radius */
+            transition: background-color 0.3s ease;
+            font-size: 1rem; /* Using rem for responsive font size */
+        }
+
+        .button-container a:hover {
+            background-color: #fff;
+            color: #14bf98;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px; /* Adjust base font size for smaller screens */
+            }
+
+            .navbar-custom .navbar-brand span {
+                font-size: 1rem;
+            }
+
+            .content-container h1 {
+                font-size: 1.75rem;
+            }
+
+            .content-container p {
+                font-size: 0.9rem;
+            }
+
+            .button-container a {
+                padding: 0.5rem 1.25rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            body {
+                font-size: 12px; /* Further adjust base font size for even smaller screens */
+            }
+
+            .navbar-custom .navbar-brand span {
+                font-size: 0.9rem;
+            }
+
+            .content-container h1 {
+                font-size: 1.5rem;
+            }
+
+            .content-container p {
+                font-size: 0.8rem;
+            }
+
+            .button-container a {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark navbar-custom fixed-top p-4">
+        <a class="navbar-brand logo-image" href="/">
+            <span>Loan Approval System</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-awesome fas fa-bars"></span>
+            <span class="navbar-toggler-awesome fas fa-times"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="{{ url_for('login') }}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="{{ url_for('register') }}">Register</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content-container">
+        <h1>Loan Approval Prediction System</h1>
+        <p>Welcome to our platform, designed to help you predict loan approvals with ease.</p>
+        <div class="button-container">
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('register') }}">Register</a>
+        </div>
+    </div>
+
+    <script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/popper.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/jquery.easing.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/jquery.magnific-popup.js')}}"></script>
+    <script src="{{url_for('static', filename='js/morphext.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/isotope.pkgd.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/validator.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/scripts.js')}}"></script>
+</body>
+</html>
