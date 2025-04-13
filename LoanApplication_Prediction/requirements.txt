@@ -1,8 +1,0 @@
-Flask
-Werkzeug
-Flask-Session
-Flask-WTF
-Flask-Bcrypt
-Flask-Login
-Flask-SQLAlchemy
-mysql-connector-python
