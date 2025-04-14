@@ -408,44 +408,36 @@
     <script src="{{ url_for('static', filename='js/swiper.min.js') }}"></script>
     
     <script>
-        $(document).ready(function() {
-            var modal = document.getElementById("resultModal");
-            var span = document.getElementsByClassName("close")[0];
-            
-            // Check if we have a result
-            {% if result %}
-                // Get the page load state from session storage
-                var isFirstLoad = sessionStorage.getItem('formSubmitted') !== 'true';
-                
-                if (isFirstLoad) {
-                    // First load of the page with results, don't show modal yet
-                    sessionStorage.setItem('formSubmitted', 'true');
-                    // Hide the modal
-                    modal.style.display = "none";
-                } else {
-                    // This is a return after form submission, show the modal
-                    modal.style.display = "block";
-                    // Reset the flag for next time
-                    sessionStorage.removeItem('formSubmitted');
-                }
-            {% else %}
-                // No result, just set the flag for next page load
-                sessionStorage.setItem('formSubmitted', 'true');
-                modal.style.display = "none";
-            {% endif %}
-            
-            // Close modal when clicking X
-            span.onclick = function() {
-                modal.style.display = "none";
-            }
-            
-            // Close modal when clicking outside
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-        });
+   $(document).ready(function() {
+    var modal = document.getElementById("resultModal");
+    var span = document.getElementsByClassName("close")[0];
+    
+    {% if result %}
+        // Check if this is a form submission or page refresh
+        if (performance.navigation.type === 1) {
+            // This is a page refresh - don't show modal
+            modal.style.display = "none";
+        } else {
+            // This is likely a form submission - show modal
+            modal.style.display = "block";
+        }
+    {% else %}
+        // No results, keep modal hidden
+        modal.style.display = "none";
+    {% endif %}
+    
+    // Close modal when clicking X
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+});
     </script>
 </body>
 </html>
